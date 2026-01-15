@@ -296,6 +296,7 @@ open class EPUBNavigatorViewController: InputObservableViewController,
 
         let viewModel = try EPUBNavigatorViewModel(
             publication: publication,
+            readingOrder: readingOrder ?? publication.readingOrder,
             config: config,
             httpServer: httpServer
         )
@@ -303,7 +304,7 @@ open class EPUBNavigatorViewController: InputObservableViewController,
         self.init(
             viewModel: viewModel,
             initialLocation: initialLocation,
-            readingOrder: readingOrder ?? publication.readingOrder,
+            readingOrder: viewModel.readingOrder,
             positionsByReadingOrder:
             // Positions and total progression only make sense in the context
             // of the publication's actual reading order. Therefore when
